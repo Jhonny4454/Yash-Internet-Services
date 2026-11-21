@@ -21,6 +21,8 @@ mn.onclick=function(){var o=nv.classList.toggle("open");mn.setAttribute("aria-ex
 nv.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){nv.classList.remove("open");mn.textContent="☰"})});
 var tt=document.getElementById("toast"),tm;
 function toast(m){tt.textContent=m;tt.classList.add("show");clearTimeout(tm);tm=setTimeout(function(){tt.classList.remove("show")},2600)}
+var LOGIN_URL=""; // paste your main customer portal link here, e.g. "https://yourportal.com/login"
+document.getElementById("login").onclick=function(e){e.preventDefault();if(LOGIN_URL){location.href=LOGIN_URL}else{toast("🔐 Customer login coming soon!")}};
 ["dl","dl2"].forEach(function(i){document.getElementById(i).onclick=function(e){e.preventDefault();toast("📲 Our app is coming soon!")}});
 var br=document.getElementById("bar");addEventListener("scroll",function(){var h=document.documentElement;br.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100||0)+"%"},{passive:true});
 }catch(e){}
