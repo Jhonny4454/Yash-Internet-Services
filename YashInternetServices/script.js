@@ -24,5 +24,10 @@ function toast(m){tt.textContent=m;tt.classList.add("show");clearTimeout(tm);tm=
 var LOGIN_URL=""; // paste your main customer portal link here, e.g. "https://yourportal.com/login"
 document.getElementById("login").onclick=function(e){e.preventDefault();if(LOGIN_URL){location.href=LOGIN_URL}else{toast("🔐 Customer login coming soon!")}};
 ["dl","dl2"].forEach(function(i){document.getElementById(i).onclick=function(e){e.preventDefault();toast("📲 Our app is coming soon!")}});
+var root=document.documentElement,tb=document.getElementById("theme");
+function setTheme(t,save){root.setAttribute("data-theme",t);tb.textContent=t==="dark"?"☀️":"🌙";var mc=document.querySelector('meta[name="theme-color"]');if(mc)mc.content=t==="dark"?"#071426":"#3fb0f1";if(save){try{localStorage.setItem("yash-theme",t)}catch(e){}}}
+var sv=null;try{sv=localStorage.getItem("yash-theme")}catch(e){}
+setTheme(sv==="dark"?"dark":"light",false);
+tb.onclick=function(){setTheme(root.getAttribute("data-theme")==="dark"?"light":"dark",true)};
 var br=document.getElementById("bar");addEventListener("scroll",function(){var h=document.documentElement;br.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100||0)+"%"},{passive:true});
 }catch(e){}
